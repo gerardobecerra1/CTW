@@ -3,7 +3,7 @@
 class Conexion{
     private $conexion;//En esta variable guardamos la referencia de la conexión PDO(PHP Data Objects).
     private $configuracion = [//Aqui guardamos nustra configuracion d enustra base de datos.
-        "dirver" => "mysql",
+        "driver" => "mysql",
         "host" => "localhost",
         "database" => "changetheworld",//nombre de la base de datos
         "port" => "3306",
