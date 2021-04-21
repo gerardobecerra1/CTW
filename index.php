@@ -2,37 +2,32 @@
 
 require_once './bin/conexion/Conexion.php';
 require_once './bin/persistencia/Crud.php';
+require_once './bin/persistencia/modelos/ModeloGenerico.php';
+require_once './bin/persistencia/modelos/tbl_Users.php';
 
-$crud = new Crud("tbl_Users");
 
-$afectadas = $crud->where("id_user", "=", 2)->update([
-     "role_user" => "Student"
-]);
+$modelo = new tbl_Users();
 
-$eliminados = $crud->where("id_user", "=", 2)->delete();
+//para hacer una consultar por campos:
+//buscar por id
+//$consulta = $modelo->where("id_user", "=", 1)->get();
+//buscar por email
+//$consulta = $modelo->where("email", "=", "dani@gmail.com")->get();
+//buscar por nombre
+$consulta = $modelo->where("name_user", "=","Luis Gerado")->get();
 
-echo '<br>';
-echo 'El número de filas afectadas es: '. $afectadas . " Eliminadas son: " . $eliminados;
-echo '<br>';
+// para insertar ahora seria asi:
+//$modelo->setRole_user("Teacher");
+//$modelo->setUsername("Danix");
+//$modelo->setName_user("Alberto Daniel");
+//$modelo->setLast_name("Hernández Villanueva");
+//$modelo->setEmail("dani@gmail.com");
+//$modelo->setPassword_user("1234");
+//$modelo->setRegistered_date(date("Y-m-d"));
+//$modelo->setDate_of_last_change(date("Y-m-d"));
+//$modelo->insert();
 
-//$id = $crud->insert([
-//    "role_user" => "Teacher",
-//    "photo" => null,
-//    "username" => "Danix",
-//    "name_user" => "Alberto Daniel",
-//    "last_name" => "Hernández Villanueva",
-//    "description_user" => null,
-//    "email" => "alberthor@gmail.com",
-//    "password_user" => "1234",
-//    "registered_date" => date("Y-m-d"),
-//    "date_of_last_change" => date("Y-m-d")
-//]);
-//
-//echo 'El id insertado es: '. $id;
-//echo '<br>';
-
-$lista = $crud->get();
 echo "<pre>";
-var_dump($lista);
+var_dump($consulta);
 echo "</pre>";
 
