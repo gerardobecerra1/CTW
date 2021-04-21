@@ -39,6 +39,45 @@ class Crud {
         }
     }
     
+    public function update($obj) {
+        try {
+            $campos = "";
+            foreach ($obj as $llave => $valor) {
+                $campos .= "`$llave`=:$llave,";//Guarda: "`nombre`=:nombre,`apellidos`=:apellidos,"
+            }
+            $campos = rtrim($campos, ",");//Retira los espacios en blanco (u otros caracteres que le digamos en este caso ",") del final de un string
+            $this->sql = "UPDATE {$this->tabla} SET {$campos} {$this->wheres}";
+            $filasAfectadas = $this->ejecutar($obj);
+            return $filasAfectadas;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+    
+    public function delete() {
+        try {
+            $this->sql = "DELETE  FROM {$this->tabla} {$this->wheres}";
+            $filasAfectadas = $this->ejecutar();
+            return $filasAfectadas;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+    
+    public function where($llave, $condicion, $valor) {
+        $this->wheres .= (strpos($this->wheres, "WHERE")) ? " AND " : " WHERE ";//strpos busca la palabra where dentro del parametro a la derecha
+        $this->wheres .= "`$llave` $condicion " . ((is_string($valor)) ? "\"$valor\"" : $valor) . " ";
+        return $this;
+        
+    }
+    
+    public function orWhere($llave, $condicion, $valor) {
+        $this->wheres .= (strpos($this->wheres, "WHERE")) ? " OR " : " WHERE ";//strpos busca la palabra where dentro del parametro a la derecha
+        $this->wheres .= "`$llave` $condicion " . (is_string($valor) ? "\"$valor\"" : $valor) . " ";
+        return $this;
+        
+    }
+
     private function ejecutar($obj = null) {
         $sth = $this->conexion->prepare($this->sql);
         if($obj !== null){//Si mi objeto no esta vacio

@@ -30,7 +30,6 @@ class Conexion {
             $url = "{$CONTROLADOR}:host={$SERVIDOR}:{$PUERTO};"."dbname={$BASE_DATOS};charset={$CODIFICACION}";
             //Se crea la conexión.
             $this->conexion = new PDO($url, $USUARIO, $CLAVE);
-            echo "CONECTADO";
             return $this->conexion;
         } catch (Exception $exc) {
             echo "NO SE PUDO CONECTAR";
