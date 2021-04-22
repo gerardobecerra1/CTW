@@ -1,12 +1,9 @@
 <?php
 
-require_once './bin/conexion/Conexion.php';
-require_once './bin/persistencia/Crud.php';
-require_once './bin/persistencia/modelos/ModeloGenerico.php';
-require_once './bin/persistencia/modelos/tbl_Users.php';
-require_once './bin/http/ControladorUsuarios.php';
-require_once './bin/http/Respuesta.php';
-require_once './bin/constantes/EMensajes.php';
+require_once './src/Roots.php';
+require_once PATH_SRC.'autoloader/Autoloader.php';
+
+Autoloader::registrar();
 
 //$usuario = new tbl_Users();
 $controladorUsuario = new ControladorUsuarios();
