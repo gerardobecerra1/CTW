@@ -13,7 +13,7 @@ class ModeloGenerico extends Crud{
         }
 
         foreach($propiedades as $llave => $valor){
-            $this->{$llave} = $llave;//asignamos nuevos atributos al objeto
+            $this->{$llave} = $valor;//asignamos nuevos atributos al objeto
         }
     }
 
@@ -74,8 +74,8 @@ class ModeloGenerico extends Crud{
     }
 
     public function update($obj){
-        $obj = $this->update($obj);
-        parent::update($obj);
+        $obj = $this->parsear($obj);
+        return parent::update($obj);
     }
 
     public function __get($nombreAtributo){

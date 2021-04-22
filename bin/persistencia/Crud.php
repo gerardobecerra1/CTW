@@ -22,6 +22,15 @@ class Crud {
         }
     }
     
+    function first() {
+        $lista = $this->get();
+        if(count($lista) > 0){
+            return $lista[0];
+        }else{
+            return null;
+        }
+    }
+    
     public function insert($obj) {
         try {
             //Alt+96 para hacer "`"
