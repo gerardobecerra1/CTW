@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/CTW/bin/persistencia/modelos/ModeloGenerico.php</file>
-            <file>file:/D:/xampp/htdocs/CTW/bin/persistencia/Crud.php</file>
+            <file>file:/D:/xampp/htdocs/CTW/src/router/Route.php</file>
+            <file>file:/D:/xampp/htdocs/CTW/routes/web.php</file>
+            <file>file:/D:/xampp/htdocs/CTW/src/launcher.php</file>
             <file>file:/D:/xampp/htdocs/CTW/index.php</file>
-            <file>file:/D:/xampp/htdocs/CTW/bin/conexion/Conexion.php</file>
+            <file>file:/D:/xampp/htdocs/CTW/src/router/Uri.php</file>
         </group>
     </open-files>
 </project-private>
