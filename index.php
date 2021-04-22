@@ -5,6 +5,8 @@ require_once './bin/persistencia/Crud.php';
 require_once './bin/persistencia/modelos/ModeloGenerico.php';
 require_once './bin/persistencia/modelos/tbl_Users.php';
 require_once './bin/http/ControladorUsuarios.php';
+require_once './bin/http/Respuesta.php';
+require_once './bin/constantes/EMensajes.php';
 
 //$usuario = new tbl_Users();
 $controladorUsuario = new ControladorUsuarios();
@@ -27,17 +29,17 @@ $controladorUsuario = new ControladorUsuarios();
 //];
 
 //$respuesta = $controladorUsuario->actualizarUsuario($usuario);
-$respuesta = $controladorUsuario->buscarUsuarioPorId(1);
-echo "<pre>";
-var_dump($respuesta);
-echo "</pre>";
+//$respuesta = $controladorUsuario->buscarUsuarioPorId(1);
+//echo "<pre>";
+//var_dump($respuesta);
+//echo "</pre>";
 
-$respuesta = $controladorUsuario->listarUsuarios();
+$respuesta = $controladorUsuario->listarUsuarios()->json();
 //$controladorUsuario->buscarUsuarioPorId(3);
-
-echo "<pre>";
-var_dump($respuesta);
-echo "</pre>";
+echo $respuesta;
+//echo "<pre>";
+//var_dump($respuesta);
+//echo "</pre>";
 
 //para hacer una consultar por campos:
 //buscar por id

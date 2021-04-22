@@ -9,41 +9,39 @@ class ControladorUsuarios{
     function insertarUsuario($usuario) {
         $usuarioModel = new tbl_Users();
         $id = $usuarioModel->insert($usuario);
-        return [
-            "codigo" => (($id > 0) ? 1: -1),
-            "mensaje" => ($id > 0) ? "Se ha registrado el usuario correctamente." : "No se pdo registrar el usuario.",
-            "datos" => $id
-        ];
+        $comprobacion = ($id > 0);
+        $respuesta = new Respuesta($comprobacion ? EMensajes::REGISTRO_EXITOSO : EMensajes::ERROR_REGISTRO);
+        //para personalizar un mensaje seria:
+//        $respuesta->setMensaje("blablabla");
+        $respuesta->setDatos($id);
+        return $respuesta;
     }
     
     function listarUsuarios() {
         $usuarioModel = new tbl_Users();
         $lista = $usuarioModel->get();
-        return [
-            "codigo" => ((count($lista) > 0) ? 1 : -1),
-            "mensaje" => ((count($lista) > 0) ? "Se han consultado los registros correctamente." : "No hay registros."),
-            "datos" => $lista
-        ];
+        $comprobacion = count($lista);
+        $respuesta = new Respuesta($comprobacion ? EMensajes::CONSULTA_EXITOSA : EMensajes::ERROR_CONSULTA);
+        $respuesta->setDatos($lista);
+        return $respuesta;
     }
     
     function actualizarUsuario($usuario) {
         $usuarioModel = new tbl_Users();
         $actualizados = $usuarioModel->where("id_user", "=", $usuario["idUser"])->update($usuario);
-        return [
-            "codigo" => (($actualizados > 0) ? 1 : -1),
-            "mensaje" => ($actualizados > 0) ? "Se ha actualizado el usuario correctamente." : "No se pudo actualizar el usuario.",
-            "datos" => $actualizados
-        ];
+        $comprobacion = ($actualizados > 0);
+        $respuesta = new Respuesta($comprobacion ? EMensajes::ACTUALIZACION_EXITOSA : EMensajes::ERROR_ACTUALIZACION);
+        $respuesta->setDatos($actualizados);
+        return $respuesta;
     }
     
     function eliminarUsuario($idUser) {
         $usuarioModel = new tbl_Users();
         $eliminados = $usuarioModel->where("id_user", "=", $idUser)->delete();
-        return [
-            "codigo" => (($eliminados > 0) ? 1 : -1),
-            "mensaje" => ($eliminados > 0) ? "Se ha eliminado el usuario correctamente." : "No se pudo eliminar el usuario.",
-            "datos" => $eliminados
-        ];
+        $comprobacion = ($eliminados > 0);
+        $respuesta = new Respuesta($comprobacion ? EMensajes::ELIMINACION_EXITOSA : EMensajes::ERROR_ELIMINACION);
+        $respuesta->setDatos($eliminados);
+        return $respuesta;
     }
     
     function buscarUsuarioPorId($idUser) {
