@@ -1,9 +1,13 @@
 <?php
 
-class ControladorUsuarios{
+class ControladorUsuarios extends Controller{
     
     public function __construct() {
         
+    }
+    
+    public function index() {
+        return $this->view("welcome");//podemos poner la terminacion .php pero la funcion asume y lo importa si esque es correcto el nombre
     }
     
     function insertarUsuario($usuario) {
@@ -47,4 +51,3 @@ class ControladorUsuarios{
         return new Respuesta($comprobacion ? EMensajes::CORRECTO : EMensajes::ERROR);
     }
 }
-

@@ -1,5 +1,5 @@
 <?php
 
-Route::get("/", function(){
-    return "Hola Mundo";
-});
+//VIEWS
+Route::get("/", ControladorUsuarios::class);
+Route::get("/listar_usuarios", ControladorUsuarios::class);
