@@ -7,7 +7,10 @@ class ControladorUsuarios extends Controller{
     }
     
     public function index() {
-        return $this->view("welcome");//podemos poner la terminacion .php pero la funcion asume y lo importa si esque es correcto el nombre
+        return $this->view("Landing");//podemos poner la terminación .php pero la funcion asume y lo importa si esque es correcto el nombre
+    }
+    public function login() {
+        return $this->view("Login");
     }
     
     function insertarUsuario($usuario) {
