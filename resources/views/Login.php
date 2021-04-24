@@ -80,11 +80,6 @@
             <i class="fas fa-lock"></i>
             <input type="text" placeholder="Password:" id="sign_password"
               title="Minimum 8 characters,Mayus, Numbers and  special digit " />
-
-          </div>
-          <div class="input-field">
-            <i class="fas fa-lock"></i>
-            <input type="date" placeholder="Date:" id="sign_date" />
           </div>
           <input type="button" class="btn" value="Sing in" id="btn_signin" />
           <p class="social-text">Sing in with a social network.</p>

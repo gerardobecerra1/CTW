@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/xampp/htdocs/CTW/src/router/Route.php</file>
             <file>file:/D:/xampp/htdocs/CTW/routes/web.php</file>
-            <file>file:/D:/xampp/htdocs/CTW/src/launcher.php</file>
-            <file>file:/D:/xampp/htdocs/CTW/index.php</file>
-            <file>file:/D:/xampp/htdocs/CTW/src/router/Uri.php</file>
+            <file>file:/D:/xampp/htdocs/CTW/resources/views/Login.php</file>
+            <file>file:/D:/xampp/htdocs/CTW/resources/views/Landing.php</file>
+            <file>file:/D:/xampp/htdocs/CTW/app/http/controllers/ControladorUsuarios.php</file>
         </group>
     </open-files>
 </project-private>
