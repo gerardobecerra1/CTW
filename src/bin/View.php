@@ -25,7 +25,7 @@ class View{
         //Creamos las variables en el contexto actual...
         if(isset($this->variables) && is_array($this->variables)){
             foreach ($this->variables as $key => $value) {
-                global  ${$key};
+                global ${$key};
                 ${$key} = $value;
             }
         }

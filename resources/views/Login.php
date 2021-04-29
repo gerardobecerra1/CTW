@@ -14,17 +14,18 @@
 
   <!-- ALERTAS -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <script src="sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="sweetalert2.min.css">
+  <!-- <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css"> -->
   <link rel="stylesheet" href="<?= URL::to("resources/css/login.css")?>" />
-  <title>Change The World</title>
+  <title>Change The World | Inicio</title>
 </head>
 
 <body>
   <div class="container">
     <div class="forms-container">
       <div class="signin-signup">
-        <form action="#" class="sign-in-form">
+
+        <form id="formInicio" action="#" class="sign-in-form">
           <h2 class="title">Log in</h2>
           <label for="tipo">Type:</label>
           <select name="tipo" id="tipo" form="sign-in-form" class="selector">
@@ -56,33 +57,46 @@
             </a>
           </div>
         </form>
-        <form action="#" method="POST" class="sign-up-form">
-          <h2 class="title">Sing in</h2>
+
+        <form id="formRegistro" action="usuarios/registrar" method="POST" class="sign-up-form">
+          <h2 class="title">Sing Up</h2>
           <label for="tipo">Type:</label>
-          <select name="tipo" id="tipo" form="sign-in-form" class="selector">
+
+          <select form="sign-in-form" class="selector" name="tipo" id="tipo">
             <option value="Normal" selected>Student</option>
             <option value="Creador">Teacher</option>
-
           </select>
-          <div class="input-field" id="border_name">
-            <i class="fas fa-user"></i>
-            <input type="text" placeholder="Name:" id="sign_name" />
-          </div>
+
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <input type="text" placeholder="Username:" id="sign_username" />
+            <input type="text" placeholder="Username:" name="username" id="sign_username" />
           </div>
+
+          <div class="input-field" id="border_name">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Name:" name="name" id="sign_name" />
+          </div>
+
+          <div class="input-field" id="border_lastnames">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Last names:" name="name" id="sign_lastnames" />
+          </div>
+
           <div class="input-field" id="border_mail">
             <i class="fas fa-envelope"></i>
-            <input type="text" placeholder="Email:" id="sign_email" />
+            <input type="text" placeholder="Email:" name="email" id="sign_email" />
           </div>
+
           <div class="input-field" id="border_pass">
             <i class="fas fa-lock"></i>
-            <input type="text" placeholder="Password:" id="sign_password"
+            <input type="text" placeholder="Password:" name="password" id="sign_password"
               title="Minimum 8 characters,Mayus, Numbers and  special digit " />
           </div>
-          <input type="button" class="btn" value="Sing in" id="btn_signin" />
+
+          <button type="submit" class="btn" id="btn_signin">Sing in</button/>
+
           <p class="social-text">Sing in with a social network.</p>
+
           <div class="social-media">
             <a href="#" class="social-icon">
               <i class="fab fa-facebook-f"></i>
@@ -97,7 +111,9 @@
               <i class="fab fa-linkedin-in"></i>
             </a>
           </div>
+
         </form>
+
       </div>
     </div>
 
@@ -132,6 +148,11 @@
 
   <script src="<?= URL::to("resources/js/login.js")?>"></script>
   <script src="<?= URL::to("resources/js/validaciones.js")?>"></script>
+  <script src="<?= URL::to("assets/js/global/helperform.js")?>"></script>
+  <script src="<?= URL::to("assets/js/global/rutas.api.js")?>"></script>
+  <script src="<?= URL::to("assets/js/global/app.global.js")?>"></script>
+  <script src="<?= URL::to("assets/js/modulos/registrar.usuarios.js")?>"></script>
+
 </body>
 
 </html>

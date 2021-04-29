@@ -1,5 +1,5 @@
-var vista = {
-    controles: {
+var vista = {//creamos un objeto
+    controles: {//Atrubutos
         tbodyListaUsuarios: $('#tablaListaUsuarios tbody')
     },
     init: function () {
@@ -23,10 +23,11 @@ var vista = {
                     var tbody = vista.controles.tbodyListaUsuarios;
                     var datos = __app.parsearRespuesta(respuesta);
                     if (datos && datos.length > 0) {
-                        tbody.html('');
+                        tbody.html('');//limpia los componentes dentro de tbody
                         for (var i = 0; i < datos.length; i++) {
                             var dato = datos[i];
-                            tbody.append(vista.utils.templates.item(dato));
+                            console.log();
+                            tbody.append(vista.utils.templates.item(dato));//mostramos los datos
                         }
                     } else {
                         tbody.html(vista.utils.templates.noHayRegistros());
@@ -48,13 +49,14 @@ var vista = {
         templates: {
             item: function (obj) {
                 return '<tr>'
-                        + '<td>' + obj.nombres + '</td>'
-                        + '<td>' + obj.apellidos + '</td>'
-                        + '<td>' + obj.edad + '</td>'
-                        + '<td>' + obj.correo + '</td>'
-                        + '<td>' + obj.telefono + '</td>'
+                        + '<td>' + obj.username + '</td>'
+                        + '<td>' + obj.name_user + '</td>'
+                        + '<td>' + obj.last_name + '</td>'
+                        + '<td>' + obj.email + '</td>'
+                        + '<td>' + obj.registered_date + '</td>'
+                        + '<td>' + obj.date_of_last_change + '</td>'
                         + '<td>'
-                        + '<a href="' + __app.urlTo('/usuarios/form/edicion/' + btoa(obj.id)) + '" class="btn-accion editar">Editar</a>'
+                        + '<a href="javascript:;" class="btn-accion editar">Editar</a>'
                         + '  |  '
                         + '<a href="javascript:;" class="btn-accion eliminar">Eliminar</a>'
                         + '</td>'

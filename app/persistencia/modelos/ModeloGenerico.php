@@ -1,88 +1,89 @@
 <?php
 
-class ModeloGenerico extends Crud{
-    private $className;
-    private $excluir = ["className","tabla","conexion","wheres","sql","excluir"];
+class ModeloGenerico extends Crud {
 
-    public function __construct($tabla, $className, $propiedades = null){
+    private $className;
+    private $excluir = ["className", "tabla", "conexion", "wheres", "sql", "excluir"];
+
+    function __construct($tabla, $className, $propiedades = null) {
         parent::__construct($tabla);
         $this->className = $className;
 
-        if(empty($propiedades)){
+        if (empty($propiedades)) {
             return;
         }
 
-        foreach($propiedades as $llave => $valor){
-            $this->{$llave} = $valor;//asignamos nuevos atributos al objeto
+        foreach ($propiedades as $llave => $valor) {
+            $this->{$llaves} = $valor;
         }
     }
 
-    protected function obtenerAtributos(){
-        $variables = get_class_vars($this->className);//obtenmos todos las variables en nuestras clases y los guarda como arreglo inclusive los del crud ya que extendemos de ella
+    protected function obtenerAtributos() {
+        $variables = get_class_vars($this->className);
         $atributos = [];
         $max = count($variables);
         foreach ($variables as $llave => $valor) {
-            if(!in_array($llave, $this->excluir)){//aqui si no es ninguno de los que tenemos en excluir lo agragamos
+            if (!in_array($llave, $this->excluir)) {
                 $atributos[] = $llave;
             }
         }
         return $atributos;
     }
 
-    protected function parsear($obj = null){
+    protected function parsear($obj = null) {
         try {
             $atributos = $this->obtenerAtributos();
             $objetoFinal = [];
-            //Obtener el objeto desde el modelo.
-            if($obj == null){
+            //Obtenes el objeto desde el modelo.
+            if ($obj == null) {
                 foreach ($atributos as $indice => $llave) {
-                    if(isset($this->{$llave})){
+                    if (isset($this->{$llave})) {
                         $objetoFinal[$llave] = $this->{$llave};
                     }
                 }
                 return $objetoFinal;
             }
 
-            //corregimos el objeto que recibimos con los atributos del modelo.
+            //Corregir el objeto que recibimos con los atributos del modelo.
             foreach ($atributos as $indice => $llave) {
-                if(isset($obj[$llave])){//isset deetermina si una variable está DEFINIDA Y NO ES NULL
+                if (isset($obj[$llave])) {
                     $objetoFinal[$llave] = $obj[$llave];
                 }
             }
             return $objetoFinal;
-        } catch (Exception $exc) {
-           throw new Exception("Error en ". $this->className . ".parsear() => " . $exc->getMessage());
+        } catch (Exception $ex) {
+            throw new Exception("Error en " . $this->className . ".parsear() => " . $ex->getMessage());
         }
     }
 
-    public function fill($obj){
+    public function fill($obj) {
         try {
             $atributos = $this->obtenerAtributos();
             foreach ($atributos as $indice => $llave) {
-                if(isset($obj[$llave])){
+                if (isset($obj[$llave])) {
                     $this->{$llave} = $obj[$llave];
                 }
             }
-        } catch (Exception $exc) {
-            throw new Exception("Error en ". $this->className . ".fill() => " . $exc->getMessage());
+        } catch (Exception $ex) {
+            throw new Exception("Error en " . $this->className . ".fill() => " . $ex->getMessage());
         }
     }
 
-    public function insert($obj = null){
+    public function insert($obj = null) {
         $obj = $this->parsear($obj);
         return parent::insert($obj);
     }
 
-    public function update($obj){
+    public function update($obj) {
         $obj = $this->parsear($obj);
         return parent::update($obj);
     }
 
-    public function __get($nombreAtributo){
+    public function __get($nombreAtributo) {
         return $this->{$nombreAtributo};
     }
 
-    public function __set($nombreAtributo, $valor){
+    public function __set($nombreAtributo, $valor) {
         $this->{$nombreAtributo} = $valor;
     }
 

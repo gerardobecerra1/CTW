@@ -47,7 +47,6 @@
                     </li>
                 </ul>
             </div>
-            <a href="../../../../../../C:/Users/geraj/Downloads/proyecto1-t12.1/routes/web.php"></a>
         </div>
     </nav>
     <!-- Navbar Final -->

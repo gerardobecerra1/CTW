@@ -7,19 +7,22 @@ class ControladorUsuarios extends Controller{
     }
     
     public function index() {
-        return $this->view("Landing");//podemos poner la terminación .php pero la funcion asume y lo importa si esque es correcto el nombre
+            return $this->view("welcome");//podemos poner la terminación .php pero la funcion asume y lo importa si esque es correcto el nombre
     }
-    public function login() {
-        return $this->view("Login");
+
+    public function registro() {
+        return $this->view("usuarios/registro");
     }
-    
-    function insertarUsuario($usuario) {
+
+    function insertarUsuario(Request $request) {
         $usuarioModel = new tbl_Users();
+        $usuario = $usuarioModel->where("email", "=", $request->email)->first();
+        if($usuario){
+            return new Respuesta(EMensajes::ERROR,"El correo ya se encuentra registrado.");
+        }
         $id = $usuarioModel->insert($usuario);
         $comprobacion = ($id > 0);
         $respuesta = new Respuesta($comprobacion ? EMensajes::REGISTRO_EXITOSO : EMensajes::ERROR_REGISTRO);
-        //para personalizar un mensaje seria:
-//        $respuesta->setMensaje("blablabla");
         $respuesta->setDatos($id);
         return $respuesta;
     }
