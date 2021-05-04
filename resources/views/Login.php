@@ -11,12 +11,9 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-  <!-- ALERTAS -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <!-- <script src="sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="sweetalert2.min.css"> -->
+  <!-- <link rel="stylesheet" href="sweetalert2.min.css"> -->
   <link rel="stylesheet" href="<?= URL::to("resources/css/login.css")?>" />
+  <link rel="icon" type="image/png" href="<?= URL::to("resources/img/LogoB.png")?>">
   <title>Change The World | Inicio</title>
 </head>
 
@@ -58,13 +55,13 @@
           </div>
         </form>
 
-        <form id="formRegistro" action="usuarios/registrar" method="POST" class="sign-up-form">
+        <form id="formRegistrar" action="login" method="POST" class="sign-up-form">
           <h2 class="title">Sing Up</h2>
           <label for="tipo">Type:</label>
 
           <select form="sign-in-form" class="selector" name="tipo" id="tipo">
-            <option value="Normal" selected>Student</option>
-            <option value="Creador">Teacher</option>
+            <option value="Student" selected>Student</option>
+            <option value="Teacher">Teacher</option>
           </select>
 
           <div class="input-field">
@@ -93,7 +90,7 @@
               title="Minimum 8 characters,Mayus, Numbers and  special digit " />
           </div>
 
-          <button type="submit" class="btn" id="btn_signin">Sing in</button/>
+          <button type="submit" class="btn" id="btn_signin">Sing in</button />
 
           <p class="social-text">Sing in with a social network.</p>
 
@@ -147,7 +144,10 @@
   </div>
 
   <script src="<?= URL::to("resources/js/login.js")?>"></script>
-  <script src="<?= URL::to("resources/js/validaciones.js")?>"></script>
+
+  <!-- ALERTAS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <!-- <script src="sweetalert2.min.js"></script> -->
   <script src="<?= URL::to("assets/js/global/helperform.js")?>"></script>
   <script src="<?= URL::to("assets/js/global/rutas.api.js")?>"></script>
   <script src="<?= URL::to("assets/js/global/app.global.js")?>"></script>

@@ -1,6 +1,6 @@
 var vista = {
     controles: {
-        formRegistro: $('#formRegistro'),   
+        formRegistro: $('#formRegistrar'),   
     },
     init: function(){
         vista.eventos();
@@ -11,18 +11,39 @@ var vista = {
     callbacks:{
         eventos:{
             accionesFormRegistro:{
-                ejecutar:function(){
+                ejecutar:function(evento){
                     __app.detenerEvento(evento);
                     var form = vista.controles.formRegistro;
                     var obj = form.getFormData();
-                    console.log(obj);
+                    vista.peticiones.resgistrarUsuarios(obj);
                 }
+            }
+        },
+        peticiones:{
+            beforeSend: function(){
+                vista.controles.formRegistro.find('input,button').prop('disabled',true);
+            },
+            completo: function(){
+                vista.controles.formRegistro.find('input,button').prop('disabled',false);
+            },
+            finalizado: function(respuesta){
+                if(__app.validarRespuesta(respuesta)){
+                    vista.controles.formRegistro.find('input').val('');
+                    swal('Correcto','Se ha registrado correctamente el usuario', 'success');
+                    return;
+                }
+                swal('Error',respuesta.mensaje, 'error');
             }
         }
     },
     peticiones:{
-        resistrarUsuarios: function(){
-            
+        resgistrarUsuarios: function(obj){
+            __app.post(RUTAS_API.USUARIOS.REGISTRAR_USUARIO, obj)
+            .beforeSend(vista.callbacks.peticiones.beforeSend)
+            .complete(vista.callbacks.peticiones.completo)
+            .success(vista.callbacks.peticiones.finalizado)
+            .error(vista.callbacks.peticiones.finalizado)
+            .send()
         }
     }
 };

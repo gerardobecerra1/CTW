@@ -7,11 +7,15 @@ class ControladorUsuarios extends Controller{
     }
     
     public function index() {
-            return $this->view("welcome");//podemos poner la terminación .php pero la funcion asume y lo importa si esque es correcto el nombre
+            return $this->view("Landing");//podemos poner la terminación .php pero la funcion asume y lo importa si esque es correcto el nombre
     }
 
     public function registro() {
         return $this->view("usuarios/registro");
+    }
+
+    public function login() {
+        return $this->view("Login");
     }
 
     function insertarUsuario(Request $request) {
@@ -20,7 +24,7 @@ class ControladorUsuarios extends Controller{
         if($usuario){
             return new Respuesta(EMensajes::ERROR,"El correo ya se encuentra registrado.");
         }
-        $id = $usuarioModel->insert($usuario);
+        $id = $usuarioModel->insert($request->all());
         $comprobacion = ($id > 0);
         $respuesta = new Respuesta($comprobacion ? EMensajes::REGISTRO_EXITOSO : EMensajes::ERROR_REGISTRO);
         $respuesta->setDatos($id);

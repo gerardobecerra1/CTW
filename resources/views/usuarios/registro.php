@@ -15,10 +15,10 @@
                     </div>
                     <hr/>
                     <h4 class="card-title mb-4">Insertar con AJAX</h4>
-                    <form id="formInsertar" action="insertar" method="POST">
+                    <form id="formRegistrar" action="insertar" method="POST">
                         <select class="selector" name="tipo" id="tipo">
-                            <option value="Normal" selected>Student</option>
-                            <option value="Creador">Teacher</option>
+                            <option value="Student" selected>Student</option>
+                            <option value="Teacher">Teacher</option>
                         </select>
                         <div class="form-group">
                             <label for="username">Username (*):</label>
