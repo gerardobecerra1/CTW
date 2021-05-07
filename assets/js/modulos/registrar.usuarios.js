@@ -29,10 +29,11 @@ var vista = {
             finalizado: function(respuesta){
                 if(__app.validarRespuesta(respuesta)){
                     vista.controles.formRegistro.find('input').val('');
-                    swal('Correcto','Se ha registrado correctamente el usuario', 'success');
+                    swal.fire('Correcto','Se ha registrado correctamente el usuario', 'success');
                     return;
                 }
-                swal('Error',respuesta.mensaje, 'error');
+                vista.controles.formRegistro.find('input,button').prop('disabled',false);
+                swal.fire('Error',respuesta.mensaje, 'error');
             }
         }
     },
